@@ -1,10 +1,6 @@
 export default class Requisicao {
     static base_url = "https://blog-m2.herokuapp.com";
-    static token = localStorage.getItem('@kenzie-blog:token');
-    static headers = {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${this.token}`
-    };
+    static headers = {"Content-Type": "application/json",};
 
     static async cadastrarUsuario(newUserData) {
         return await fetch(`${this.base_url}/users/register`, {
