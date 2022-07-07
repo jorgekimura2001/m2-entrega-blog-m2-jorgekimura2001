@@ -9,7 +9,22 @@
 <body>
   <main class="cards">
     <section class="card__cadastro">
-      
+      <h2>Cadastro</h2>
+      <form class="form__cadastro">
+        <input type="text" name="userName" id="userName" placeholder="Nome de usuário">
+        <input type="email" name="userEmail" id="userEmail" placeholder="Email">
+        <input type="text" name="userAvatar" id="userAvatar" placeholder="Foto de perfil">
+        <input type="password" name="userPassword" id="userPassword" placeholder="Senha">
+        <button class="btn__cadastro">Cadastrar</button>
+      </form>
+    </section>
+    <section class="card__login">
+      <h2>Login</h2>
+      <form class="form__login">
+        <input type="email" name="userEmail" id="userEmail" placeholder="Email">
+        <input type="password" name="userPassword" id="userPassword" placeholder="Senha">
+        <button class="btn__login">Login</button>
+      </form>
     </section>
   </main>
   <script type="module" src="./src/script.js"></script>
