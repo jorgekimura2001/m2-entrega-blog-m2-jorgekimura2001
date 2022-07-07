@@ -1,4 +1,10 @@
 import Requisicao from "./controllers/requisicao.controllers.js";
+import Cards from "./models/cards.models.js";
+
+const mainCards = document.querySelector('.cards');
+
+const cardCadastro = Cards.cardCadastro()
+mainCards.appendChild(cardCadastro)
 
 const form = document.querySelector(".form__cadastro");
 const [
