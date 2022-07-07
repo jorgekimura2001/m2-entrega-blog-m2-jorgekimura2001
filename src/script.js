@@ -1,15 +1,31 @@
 import Requisicao from "./controllers/requisicao.controllers.js";
-import Autenticacao from "./controllers/autenticacao.controllers.js";
 
-const logando = {
-    email: "kenziner_topster@gmail.com.br",
-    password: "Teste123"
+const form = document.querySelector(".form__cadastro");
+const [
+  inputUserName,
+  inputUserEmail,
+  inputUserAvatar,
+  inputUserPassword,
+  btnCadastro,
+] = form;
+
+function escutadorEvento() {
+        const novaPessoa = {}
+        btnCadastro.addEventListener("click", async (evt) => {
+            evt.preventDefault();
+            novaPessoa["username"] = inputUserName.value;
+            novaPessoa["email"] = inputUserEmail.value;
+            novaPessoa["avatarUrl"] = inputUserAvatar.value;
+            novaPessoa["password"] = inputUserPassword.value;
+            await Requisicao.cadastrarUsuario(novaPessoa);
+            resetar()
+        });
+    }
+escutadorEvento()
+
+function resetar() {
+    inputUserName.value = "";
+    inputUserEmail.value = "";
+    inputUserAvatar.value = "";
+    inputUserPassword.value = "";
 }
-
-const usuario = await Autenticacao.listarUsuario(1927)
-
-const logar = await Requisicao.logarUsuario(logando)
-
-console.log(logar);
-
-console.log(usuario)
