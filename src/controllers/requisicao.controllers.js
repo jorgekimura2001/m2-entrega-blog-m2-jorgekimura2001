@@ -24,7 +24,6 @@ export default class Requisicao {
         })
             .then(response => response.json())
             .then(data => {
-                localStorage.removeItem('@kenzie-blog:id')
                 localStorage.setItem('@kenzie-blog:userId', data.userId);
                 localStorage.setItem('@kenzie-blog:token', data.token);
                 return data
