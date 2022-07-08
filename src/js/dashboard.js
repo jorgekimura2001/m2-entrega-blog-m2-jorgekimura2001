@@ -17,3 +17,10 @@ btnLogout.addEventListener('click', (evt) => {
     // mandar para a página inicial
 })
 
+const posts = await Autenticacao.listarPosts()
+
+const postsRecentes = posts.data
+
+postsRecentes.forEach(element => {
+    console.log(element)
+});
