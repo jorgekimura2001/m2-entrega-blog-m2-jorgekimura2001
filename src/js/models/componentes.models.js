@@ -106,4 +106,29 @@ export default class ComponentesDOM{
         buttonLogout.innerText = "Logout";
         return buttonLogout
     }
+
+    static cardPostsRecentes(avatarUrl ) {
+        const cardPost = document.createElement('div');
+
+        const avatar = document.createElement('div');
+        const imagem = document.createElement('img');
+        imagem.src = `${avatarUrl}`
+
+        const divPost = document.createElement('div');
+        const username = document.createElement('h3');
+        const post = document.createElement('p');
+
+        const divRodape = document.createElement('div');
+        const data = document.createElement('p');
+
+        // só podem aparecer para a pessoa com o id === userId
+        // const editar = document.createElement('h4');
+        // const apagar = document.createElement('h4');
+
+        avatar.append(imagem)
+        divPost.append(username, post)
+        divRodape.append(data)
+        cardPost.append(avatar, divPost, divRodape)
+        return cardPost
+    }
 }
