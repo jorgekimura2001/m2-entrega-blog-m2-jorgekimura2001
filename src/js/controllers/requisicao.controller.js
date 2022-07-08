@@ -3,17 +3,23 @@ export default class Requisicao {
     static headers = {"Content-Type": "application/json",};
 
     static async cadastrarUsuario(newUserData) {
-        return await fetch(`${this.base_url}/users/register`, {
+        const usuario =  await fetch(`${this.base_url}/users/register`, {
             method: "POST",
             headers: this.headers,
             body: JSON.stringify(newUserData),
         })
-        .then((response) => response.json())
-        .catch((error) => console.log(error));
+        .then((response) => { return response.json()})
+        .catch((error) => console.log(error))
+
+        if(usuario.message === null){
+            window.location = './src/views/login.html';
+        }
+        return usuario
+        
     };
 
     static async logarUsuario(userData) {
-        return await fetch(`${this.base_url}/users/login`, {
+        const usuario = await fetch(`${this.base_url}/users/login`, {
           method: "POST",
           headers: this.headers,
           body: JSON.stringify(userData),
@@ -25,5 +31,12 @@ export default class Requisicao {
                 return data
             })
             .catch(error => console.log(error))
+
+            console.log(usuario)
+
+            if(usuario.message !== 'Invalid email or password'){
+                window.location = '../src/views/dashboard.html';
+            }
+            return usuario
     }
 }
