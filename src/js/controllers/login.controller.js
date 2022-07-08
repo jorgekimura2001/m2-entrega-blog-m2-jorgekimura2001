@@ -25,6 +25,4 @@ export default class Login{
             inputs.forEach(input => input.value == "")
         })
     }
-
-  
 }
