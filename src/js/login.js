@@ -1,9 +1,9 @@
-import Cards from "./models/cards.models.js";
+import ComponentesDOM from "./models/componentes.models.js";
 import Requisicao from "./controllers/requisicao.controllers.js";
 
 const mainCards = document.querySelector('.cards');
 
-const cardLogin = Cards.cardLogin()
+const cardLogin = ComponentesDOM.cardLogin();
 
 mainCards.append(cardLogin)
 
