@@ -9,12 +9,7 @@ export default class Cadastro{
     }
     
     static escutarCadastro(){
-        // const link = document.createElement('a')
-        // link.href ="";
-        // link.innerText = 'Cadastrar'
-        
         const btnCadastro = document.querySelector('.btn__cadastro')
-       // btnCadastro.append(link)
         btnCadastro.addEventListener('click', async (e) => {
             e.preventDefault()
             const newUserData = {}
@@ -33,5 +28,3 @@ export default class Cadastro{
         })
     } 
 }
-
-

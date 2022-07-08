@@ -1,5 +1,7 @@
-export default class Header{
+export default class CardHeader{
     static infoUser(avatarUrl, username){
+        const infoUser = document.createElement('div');
+
         const div = document.createElement('div');
         div.classList.add("topo__container");
 
@@ -15,8 +17,13 @@ export default class Header{
         userName.classList.add("topo__userName");
         userName.innerText = `${username}`;
 
+        const btnLogout = document.createElement('button');
+        btnLogout.classList.add('btn__logout')
+        btnLogout.innerText = "Logout";
+
         avatar.append(imagem)
-        div.append(avatar, userName)
+        infoUser.append(avatar, userName)
+        div.append(infoUser, btnLogout)
         return div
     }
 }

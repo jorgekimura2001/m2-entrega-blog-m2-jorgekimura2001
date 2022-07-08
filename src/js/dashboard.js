@@ -1,26 +1,6 @@
-// import ComponentesDOM from "./models/cadastro.model.js";
+import DashBoard from "./controllers/dashboard.controller.js";
 
-// import dinamico from "./controllers/login.controller.js";
-
-
-// // await dinamico.userInfoHeader()
-
-
-// // // const infoUser = ComponentesDOM.headerInfoUser(avatarUrl, username);
-// const btnLogout = ComponentesDOM.btnLogout();
-// //header.append(infoUser, btnLogout)
-
-// btnLogout.addEventListener('click', (evt) => {
-//     evt.preventDefault()
-//     // localStorage.clear() -- quando houver o click apagará o id e o token e deverá
-//     // mandar para a página inicial
-// })
-
-//const posts = await Autenticacao.listarPosts()
-
-// const postsRecentes = posts.data
-
-// const sectionPostRecente = document.querySelector('.post__recent')
+DashBoard.headerInfoUser()
 
 // postsRecentes.forEach(element => {
 //     const avatar = element.user.avatarUrl;
