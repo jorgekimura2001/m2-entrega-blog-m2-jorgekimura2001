@@ -35,7 +35,9 @@ export default class Requisicao {
             console.log(usuario)
 
             if(usuario.message !== 'Invalid email or password'){
-                window.location = '../src/views/dashboard.html';
+                window.location = './dashboard.html';
+               // dashboard --> cadastro
+               // window.location = '../../index.html' --> logout
             }
             return usuario
     }
