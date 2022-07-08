@@ -1,9 +1,9 @@
-import Cards from "./models/cards.models.js";
+import ComponentesDOM from "./models/componentes.models.js";
 import Requisicao from "./controllers/requisicao.controllers.js";
 
 const mainCards = document.querySelector(".cards");
 
-const cardCadastro = Cards.cardCadastro();
+const cardCadastro = ComponentesDOM.cardCadastro();
 mainCards.appendChild(cardCadastro);
 
 const form = document.querySelector(".form__cadastro");
