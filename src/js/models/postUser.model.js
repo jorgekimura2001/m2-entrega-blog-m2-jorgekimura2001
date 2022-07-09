@@ -1,4 +1,4 @@
-export default class CardParaEdicao {
+export default class CardPostUser {
     static cardPostRecente(avatarUrl, username, conteudo, data){
         const divPost = document.createElement('div');
         const divAvatar = document.createElement('div');
@@ -14,10 +14,13 @@ export default class CardParaEdicao {
         postConteudo.innerText = `${conteudo}`;
 
         const rodape = document.createElement('div');
-        const editar = document.createElement('h4');
+        rodape.classList.add('post__rodape')
+        const editar = document.createElement('button');
         editar.innerHTML = 'Editar';
-        const apagar = document.createElement('h4');
+        editar.classList.add('post__edit');
+        const apagar = document.createElement('button');
         apagar.innerText = 'Apagar';
+        apagar.classList.add('post__remove');
         const dataPost = document.createElement('p');
         dataPost.innerText = `${data}`;
 

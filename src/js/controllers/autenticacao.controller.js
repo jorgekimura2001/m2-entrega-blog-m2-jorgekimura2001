@@ -24,4 +24,23 @@ export default class Autenticacao {
         .then(resp => resp.json())
         .catch(err => console.log(err))
   }
+
+  static async criarPost(newPostData) {
+    return await fetch(`${this.base_url}/posts`, {
+      method: "POST",
+      headers: this.headers,
+      body: JSON.stringify(newPostData),
+    })
+      .then(response => response.json())
+      .catch(err => console.log(err))
+  }
+
+  static async listarInfoPost(idPost) {
+    return await fetch(`${this.base_url}/posts/${idPost}`, {
+      method: "GET",
+      headers: this.headers
+    })
+      .then(resp => resp.json())
+      .catch(err => console.log(err))
+  }
 }
