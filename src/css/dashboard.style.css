@@ -1,5 +1,6 @@
 body{
     font-family: var(--font-textoPrincipal);
+    background-color: rgb(var(--color-gray-light));
 }
 .topo{
     background-color: rgb(var(--color-blue));
@@ -47,4 +48,37 @@ body{
     font-weight: 400;
     padding: 0.25rem 1rem;
     cursor: pointer;
+}
+.posts{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.post__new{
+    width: 37.5rem;
+}
+
+.post__new > form {
+     display: flex;
+    justify-content: space-evenly;
+    align-items: flex-end;
+}
+.post__new > form > textarea{
+    width: 32.5rem;
+    height: 6rem;
+}
+.btn__novoPost{
+    width: 1.5rem;
+    height: 1.5rem;
+    background-color: rgb(var(--color-yellow));
+    color: rgb(var(--color-white));
+    border-radius: 0.25rem;
+    cursor: pointer;
+    border: transparent;
+}
+.btn__logout:hover, .btn__novoPost:hover{
+    background-color: rgb(var(--color-white));
+    color: rgb(var(--color-yellow));
+    border: 1px solid rgb(var(--color-yellow));
 }
