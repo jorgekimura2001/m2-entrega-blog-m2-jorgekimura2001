@@ -1,0 +1,13 @@
+:root{
+    /* colors - RGB */
+    --color-blue: 100, 149, 237;
+    --color-white: 255, 255, 255;
+    --color-gray-light: 95, 92, 92;
+    --color-gray-median: 152, 152, 152;
+    --color-gray-light: 243, 243, 243;
+    --color-yellow: 237, 188, 100;
+    --color-black: 0, 0, 0;
+
+    --font-Subtextos: 'Roboto', sans-serif;
+    --font-textoPrincipal: 'Montserrat', sans-serif;
+}
