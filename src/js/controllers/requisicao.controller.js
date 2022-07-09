@@ -8,14 +8,13 @@ export default class Requisicao {
             headers: this.headers,
             body: JSON.stringify(newUserData),
         })
-        .then((response) => { return response.json()})
+        .then((response) => response.json())
         .catch((error) => console.log(error))
 
-        if(usuario.message === null){
-            window.location = './src/views/login.html';
+        if(usuario.message == null){
+            window.location = '/src/views/login.html';
         }
-        return usuario
-        
+        return usuario  
     };
 
     static async logarUsuario(userData) {
