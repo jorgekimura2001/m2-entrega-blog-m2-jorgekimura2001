@@ -43,4 +43,23 @@ export default class Autenticacao {
       .then(resp => resp.json())
       .catch(err => console.log(err))
   }
+  
+  static async editarPost(idPost, postEditData) {
+    return await fetch(`${this.base_url}/posts/${idPost}`, {
+      method: "PATCH",
+      headers: this.headers,
+      body: JSON.stringify(postEditData)
+    })
+      .then(resp => resp.json())
+      .catch(err => console.log(err))
+  }
+
+  static async apagarPost(idPost) {
+    return await fetch(`${this.base_url}/posts/${idPost}`, {
+      method: 'DELETE',
+      headers: this.headers
+    })
+      .then(resp => resp.json())
+      .catch(err => console.log(err))
+  }
 }

@@ -1,8 +1,9 @@
 export default class CardPostRecente{
-    static cardPostRecente(avatarUrl, username, conteudo, data){
+    static cardPostRecente(avatarUrl, username, conteudo, data, id){
         const divPost = document.createElement('div');
+        divPost.id = id;
+        
         const divAvatar = document.createElement('div');
-
         const avatar = document.createElement('img');
         avatar.src = `${avatarUrl}`;
         avatar.alt = `Foto de perfil`;
