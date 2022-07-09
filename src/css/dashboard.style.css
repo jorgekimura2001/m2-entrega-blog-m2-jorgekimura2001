@@ -1,0 +1,50 @@
+body{
+    font-family: var(--font-textoPrincipal);
+}
+.topo{
+    background-color: rgb(var(--color-blue));
+    height: 3.8rem;
+    margin-bottom: 1.375rem;
+}
+.topo__container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: inherit;
+    background-color: inherit;
+    margin-bottom: inherit;
+}
+
+.topo__container > div {
+    display: flex;
+    align-items: center;
+}
+.topo__userAvatar{
+    width: 3rem;
+    height: 2.875rem;
+    margin-left: 0.875rem;
+    margin-right: 0.6rem;
+}
+.topo__userAvatar > img{
+    border-radius: 100%;
+    width: inherit;
+    height: inherit;
+    object-fit: cover;
+}
+.topo__userName{
+    color: rgb(var(--color-white));
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+.btn__logout{
+    color: rgb(var(--color-white));
+    background-color: rgb(var(--color-yellow));
+    height: 1.875rem;
+    width: 6rem;
+    margin-right: 2.5rem;
+    border-radius: 0.25rem;
+    font-size: 1.125rem;
+    font-weight: 400;
+    padding: 0.25rem 1rem;
+    cursor: pointer;
+}
