@@ -3,10 +3,12 @@ import Autenticacao from './autenticacao.controller.js';
 import CardPostRecente from "../models/postRecentes.model.js";
 import CardPostUser from "../models/postUser.model.js";
 import NovoPost from "../models/novoPost.model.js";
+import CardEdicaoPost from "../models/postUserEdit.model.js";
 
 export default class DashBoard {
   static header = document.querySelector(".topo");
   static main = document.querySelector(".posts");
+  static sectionPosts = document.createElement('section')
   
   static async headerInfoUser() {
     const infoUser = await Autenticacao.listarUsuario();
@@ -14,17 +16,14 @@ export default class DashBoard {
     const username = infoUser.username;
     const divInfoUser = CardHeader.infoUser(avatarUser, username);
     this.header.appendChild(divInfoUser);
+    const btnLogout = document.querySelector('.btn__logout')
+    btnLogout.addEventListener('click', evt => {
+      evt.preventDefault()
+      localStorage.clear()
+      window.location = '../../index.html'
+    })
   }
-  static escutarLogout() {
-    const btnLogout = document.querySelector(".btn__logout");
-
-    btnLogout.addEventListener("click", (evt) => {
-      evt.preventDefault();
-      //  localStorage.clear() -- quando houver o click apagará o id e o token e deverá
-      //  mandar para a página inicial
-    });
-  }
-
+  
   static criarNovoPost() {
     const card = NovoPost.cardNovoPost();
     const section = document.createElement("section");
@@ -42,14 +41,12 @@ export default class DashBoard {
       const value = alvo.firstChild;
       valuePost[value.name] = value.value;
       const idPost = await Autenticacao.criarPost(valuePost);
-        localStorage.setItem("@kenzie-blog:postId", idPost.id);
-        window.location.reload(true)
+      this.userPostRecent(idPost.id)
+      window.location.reload(true)
     });
   }
 
-    static async userPostRecent(idPost) {
-        const sectionUser = document.createElement('section');
-        sectionUser.classList.add('post__user')
+  static async userPostRecent(idPost) {
     const postRecente = await Autenticacao.listarInfoPost(idPost);
     const avatarUser = postRecente.user.avatarUrl;
     const username = postRecente.user.username;
@@ -65,49 +62,114 @@ export default class DashBoard {
       avatarUser,
       username,
       conteudo,
-      dataTratada
+      dataTratada,
     );
-      sectionUser.append(cardUser);
-      this.main.append(sectionUser);
+      this.sectionPosts.append(cardUser);
+    this.main.append(this.sectionPosts);
     }
     
   static async listarPostsRecentes() {
-      const postsRecentes = await Autenticacao.listarPosts();
-      const sectionPosts = document.createElement('section')
-      sectionPosts.classList.add('post__othersUsers')
-      const postRecente = postsRecentes.data[0]
-      postsRecentes.data.forEach((post) => {
-        //   console.log(post)
-        //   console.log(post.user.id)
-          if (post.id !== postRecente.id) {
+    const postsRecentes = await Autenticacao.listarPosts();
+    this.sectionPosts.classList.add('post__recent');
+    
+    postsRecentes.data.forEach(async (post) => {
+      const usuarioUsername = document.querySelector(".topo__userName");
+      const usernameValue = usuarioUsername.innerText;
+         if (post.user.username !== usernameValue) {
              const avatar = post.user.avatarUrl;
              const username = post.user.username;
              const conteudo = post.content;
-             const tratativa = post.createdAt
+             const dataTratada = post.createdAt
                .split("T")
                .reverse()
                .slice(1)[0]
                .split("-")
                .reverse()
-               .join("/");
-             const card = CardPostRecente.cardPostRecente(
+             .join("/");
+           const id = post.id
+             const card = await CardPostRecente.cardPostRecente(
                avatar,
                username,
                conteudo,
-               tratativa
+               dataTratada, 
+               id
               );
-              sectionPosts.append(card);
-       }
-    
-     
-      this.main.append(sectionPosts);
+              this.sectionPosts.append(card);
+         } else {
+           const avatar = post.user.avatarUrl;
+           const username = post.user.username;
+           const conteudo = post.content;
+           const dataTratada = post.createdAt
+             .split("T")
+             .reverse()
+             .slice(1)[0]
+             .split("-")
+             .reverse()
+             .join("/");
+           const id = post.id
+           const card = await CardPostUser.cardPostRecente(
+             avatar,
+             username,
+             conteudo,
+             dataTratada,
+             id
+           );
+           this.sectionPosts.append(card);
+           const btnEditar = document.querySelector('.post__edit')
+           console.log(btnEditar)
+           btnEditar.addEventListener('click', (evt) => {
+             evt.preventDefault()
+             const alvo = evt.target.form.closest('div').parentElement;
+             const dados = [...alvo.childNodes]
+             const avatar = dados[0].firstChild.src
+             const username = dados[1].innerText
+             const conteudo = dados[2].innerText
+             const data = dados[3].lastChild.innerText
+             const cardEdicao = CardEdicaoPost.cardEditarPost(avatar, username, data)
+             const id = alvo.id
+             alvo.innerHTML = "";
+             alvo.appendChild(cardEdicao);
+             const btnEnviarEdit = document.querySelector(".post__enviar");
+             btnEnviarEdit.addEventListener('click', async (e) => {
+               e.preventDefault()
+               const postEditado = {};
+               const textarea = document.querySelector('.post__edit--conteudo')
+               const newConteudo = textarea.value;
+               postEditado[textarea.name] = textarea.value;
+               await Autenticacao.editarPost(id, postEditado)
+               const conteudoEdit = CardPostUser.cardPostRecente(
+                 avatar,
+                 username,
+                 newConteudo,
+                 data
+               );
+               this.sectionPosts.removeChild(alvo);
+               this.sectionPosts.appendChild(conteudoEdit);
+               window.location.reload(true)
+             })
+             const btnCancelarEdit = document.querySelector('.post__cancelar')
+             btnCancelarEdit.addEventListener('click', (e) => {
+               e.preventDefault()
+               const conteudoAnterior = CardPostUser.cardPostRecente(
+                 avatar,
+                 username,
+                 conteudo,
+                 data
+               );
+               this.sectionPosts.removeChild(alvo);
+               this.sectionPosts.appendChild(conteudoAnterior);
+             })
+           })
+           const btnApagarPost = document.querySelector('.post__remove')
+           btnApagarPost.addEventListener('click', async (evt) => {
+             evt.preventDefault()
+             const alvo = evt.target.form.closest('div').parentElement
+             const idApagar = alvo.id
+             await Autenticacao.apagarPost(idApagar)
+             window.location.reload(true)
+           })
+      }
+        this.main.append(this.sectionPosts);
     });
   }
-//    static escutadorEdicaoPost(){
-//        const btnEditar = document.querySelector(".post__user");
-//        console.log(btnEditar)
-//        btnEditar.addEventListener('click', (e) => {
-//            console.log(e)
-//        });
-//   }
 }
