@@ -1,12 +1,15 @@
 export default class CardEdicaoPost {
   static cardEditarPost(avatarUrl, username, data) {
     const divPost = document.createElement("div");
-    divPost.classList.add("post__user");
+    divPost.classList.add("post__user--edit");
 
     const divAvatar = document.createElement("div");
     const avatar = document.createElement("img");
     avatar.src = `${avatarUrl}`;
     avatar.alt = `Foto de perfil`;
+
+     const divInfoPost = document.createElement("div");
+     divInfoPost.classList.add("post__info--edit");
 
     const userName = document.createElement("h3");
     userName.innerText = `${username}`;
@@ -30,7 +33,8 @@ export default class CardEdicaoPost {
     formEdit_Remove.append(editar, cancelar);
     rodape.append(formEdit_Remove, dataPost);
     divAvatar.append(avatar);
-    divPost.append(divAvatar, userName, postConteudo, rodape);
+    divInfoPost.append(userName, postConteudo)
+    divPost.append(divAvatar, divInfoPost, rodape);
 
     return divPost;
   }
