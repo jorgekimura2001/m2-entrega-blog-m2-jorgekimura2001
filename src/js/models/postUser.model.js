@@ -1,9 +1,9 @@
 export default class CardPostUser {
     static cardPostRecente(avatarUrl, username, conteudo, data, id){
         const divPost = document.createElement('div');
-        divPost.classList.add('post__user')
+        divPost.classList.add('post__user');
         divPost.id = id
-
+        
         const divAvatar = document.createElement('div');
         const avatar = document.createElement('img');
         avatar.src = `${avatarUrl}`;
@@ -25,8 +25,10 @@ export default class CardPostUser {
         editar.innerHTML = 'Editar';
         editar.classList.add('post__edit');
         editar.type = 'button'
+        editar.id = id 
         const apagar = document.createElement('button');
         apagar.innerText = 'Apagar';
+        apagar.type = 'button'
         apagar.classList.add('post__remove');
         const dataPost = document.createElement('p');
         dataPost.innerText = `${data}`;
