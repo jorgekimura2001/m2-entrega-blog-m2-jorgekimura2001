@@ -172,10 +172,7 @@ body{
     height: 11.25rem;
     align-items: flex-start;
     justify-content: space-between; 
-   
-}
-.post__user--edit{
-    width: inherit;
+   width: inherit;
 }
 .post__user--edit > div > img{
     width: 4.375rem;
@@ -198,6 +195,11 @@ body{
 .post__info--edit > textarea{
     height: 85%;
     width: inherit;
+    font-family: var(--font-Subtextos);
+    font-size: 0.75rem;
+    color: rgb(var(--color-gray));
+    padding-top: 0.75rem;
+    padding-left: 0.75rem;
 }
 .post__enviar{
     color: rgb(var(--color-blue));
@@ -217,4 +219,46 @@ body{
     width: 4rem;
     height: 0.875rem;
     margin-right: 1.875rem;
+}
+@media screen and (max-width: 630px) {
+  .btn__logout{
+    margin-right: 1.25rem;
+  }
+  .post__new{
+    width: 100%;
+  }
+  .post__new > form{
+    justify-content: initial;
+  }
+  .post__new > form > textarea{
+    width: 90%;
+  }
+  .post__recent{
+    width: 100%;
+    margin-top: 1.75rem;
+  }
+  .post__recent > div, .post__user--edit {
+    max-height: 12rem;
+    margin-bottom: 1rem;
+  }
+  .post__recent > div > div > img, .post__user--edit > div > img{
+    margin-right: 1.25rem;
+  }
+  .post__recent .post__info, .post__info--edit{
+    overflow: auto;
+    margin-right: 0;
+  }
+  .post__data, .post__rodape{
+    margin-right: 0.75rem;
+    margin-left: 0.75rem;
+  }
+  .post__user--edit {
+    justify-content: center;
+  }
+  .post__info--edit{
+    width: inherit;
+  }
+  .post__info--edit > textarea{
+    width: 100%;
+  }
 }

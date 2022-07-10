@@ -55,6 +55,7 @@ export default class Autenticacao {
   }
 
   static async apagarPost(idPost) {
+    console.log(idPost)
     return await fetch(`${this.base_url}/posts/${idPost}`, {
       method: 'DELETE',
       headers: this.headers

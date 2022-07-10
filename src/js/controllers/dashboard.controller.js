@@ -71,8 +71,8 @@ export default class DashBoard {
   static async listarPostsRecentes() {
     const postsRecentes = await Autenticacao.listarPosts();
     this.sectionPosts.classList.add('post__recent');
-    
     postsRecentes.data.forEach(async (post) => {
+      await Autenticacao.listarPosts()
       const usuarioUsername = document.querySelector(".topo__userName");
       const usernameValue = usuarioUsername.innerText;
          if (post.user.username !== usernameValue) {
@@ -114,61 +114,67 @@ export default class DashBoard {
              dataTratada,
              id
            );
-           this.sectionPosts.append(card);
-           const btnEditar = document.querySelector('.post__edit')
+           await this.sectionPosts.append(card);
+           await Autenticacao.listarPosts()
+           const btnEditar = document.querySelector('.post__edit');
+           const divPai = card
+           await Autenticacao.listarPosts()
            btnEditar.addEventListener('click', (evt) => {
              evt.preventDefault()
-             const alvo = evt.target.form.closest('div').parentElement;
-             const dados = [...alvo.childNodes]
-             const avatar = dados[0].firstChild.src
-             const userDados = dados[1].children
-             const infosUser = [...userDados]
-             console.log(infosUser)
-             const username = infosUser[0].innerText;
-             const conteudoPost = infosUser[1].innerText
-             const data = dados[2].lastChild.innerText
-             const cardEdicao = CardEdicaoPost.cardEditarPost(avatar, username, data)
-             console.log(cardEdicao)
-             const id = alvo.id
-             alvo.innerHTML = "";
-             alvo.appendChild(cardEdicao);
-             const btnEnviarEdit = document.querySelector(".post__enviar");
-             btnEnviarEdit.addEventListener('click', async (e) => {
-               e.preventDefault()
-               const postEditado = {};
-               const textarea = document.querySelector('.post__edit--conteudo')
-               const newConteudo = textarea.value;
-               postEditado[textarea.name] = textarea.value;
-               await Autenticacao.editarPost(id, postEditado)
-               const conteudoEdit = CardPostUser.cardPostRecente(
-                 avatar,
-                 username,
-                 newConteudo,
-                 data
-               );
-               this.sectionPosts.removeChild(alvo);
-               this.sectionPosts.appendChild(conteudoEdit);
-               window.location.reload(true)
-             })
-             const btnCancelarEdit = document.querySelector('.post__cancelar')
-             btnCancelarEdit.addEventListener('click', (e) => {
-               e.preventDefault()
-               const conteudoAnterior = CardPostUser.cardPostRecente(
-                 avatar,
-                 username,
-                 conteudo,
-                 data
-               );
-               this.sectionPosts.removeChild(alvo);
-               this.sectionPosts.appendChild(conteudoAnterior);
-             })
+             const cardId = divPai.id
+             if (btnEditar.id === cardId) {
+                 card.innerHTML = "";
+                 const cardEdicao = CardEdicaoPost.cardEditarPost(
+                   avatar,
+                   username,
+                   dataTratada,
+                   conteudo
+                 );
+
+                 card.appendChild(cardEdicao);
+                 const btnEnviarEdit = document.querySelector(".post__enviar");
+                 btnEnviarEdit.addEventListener("click", async (e) => {
+                   e.preventDefault();
+                   const postEditado = {};
+                   const textarea = document.querySelector(
+                     ".post__edit--conteudo"
+                   );
+                   const newConteudo = textarea.value;
+                   postEditado[textarea.name] = textarea.value;
+                   await Autenticacao.editarPost(id, postEditado);
+                   const conteudoEdit = CardPostUser.cardPostRecente(
+                     avatar,
+                     username,
+                     newConteudo,
+                     dataTratada
+                   );
+                   this.sectionPosts.removeChild(card);
+                   this.sectionPosts.appendChild(conteudoEdit);
+                   window.location.reload(true);
+                 });
+                 const btnCancelarEdit =
+                   document.querySelector(".post__cancelar");
+                 btnCancelarEdit.addEventListener("click", (e) => {
+                   e.preventDefault();
+                   const conteudoAnterior = CardPostUser.cardPostRecente(
+                     avatar,
+                     username,
+                     conteudo,
+                     dataTratada
+                   );
+                   this.sectionPosts.removeChild(card);
+                   this.sectionPosts.appendChild(conteudoAnterior);
+                   window.location.reload(true);
+                 });
+             }
            })
-           const btnApagarPost = document.querySelector('.post__remove')
+           const btnApagarPost = document.querySelector('.post__remove');
            btnApagarPost.addEventListener('click', async (evt) => {
              evt.preventDefault()
              const alvo = evt.target.form.closest('div').parentElement
-             const idApagar = alvo.id
-             await Autenticacao.apagarPost(idApagar)
+             console.log(alvo)
+            const idApagar = alvo.id
+             await Autenticacao.apagarPost(idApagar) 
              window.location.reload(true)
            })
       }

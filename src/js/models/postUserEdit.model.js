@@ -1,8 +1,8 @@
 export default class CardEdicaoPost {
-  static cardEditarPost(avatarUrl, username, data) {
+  static cardEditarPost(avatarUrl, username, data, content) {
     const divPost = document.createElement("div");
     divPost.classList.add("post__user--edit");
-
+    
     const divAvatar = document.createElement("div");
     const avatar = document.createElement("img");
     avatar.src = `${avatarUrl}`;
@@ -16,6 +16,7 @@ export default class CardEdicaoPost {
 
     const postConteudo = document.createElement("textarea");
     postConteudo.classList.add('post__edit--conteudo')
+    postConteudo.placeholder = `${content}` 
     postConteudo.name = 'content'
 
     const rodape = document.createElement("div");
