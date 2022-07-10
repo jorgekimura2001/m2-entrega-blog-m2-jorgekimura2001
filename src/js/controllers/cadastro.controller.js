@@ -11,7 +11,7 @@ export default class Cadastro{
     static escutarCadastro(){
         const btnCadastro = document.querySelector('.btn__cadastro')
         btnCadastro.addEventListener('click', async (e) => {
-             e.preventDefault()
+            e.preventDefault()
             const newUserData = {}
                 const alvo = e.target.closest('button').form
                 const inputs = [...alvo];
