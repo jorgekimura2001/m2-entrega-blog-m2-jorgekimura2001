@@ -116,16 +116,19 @@ export default class DashBoard {
            );
            this.sectionPosts.append(card);
            const btnEditar = document.querySelector('.post__edit')
-           console.log(btnEditar)
            btnEditar.addEventListener('click', (evt) => {
              evt.preventDefault()
              const alvo = evt.target.form.closest('div').parentElement;
              const dados = [...alvo.childNodes]
              const avatar = dados[0].firstChild.src
-             const username = dados[1].innerText
-             const conteudo = dados[2].innerText
-             const data = dados[3].lastChild.innerText
+             const userDados = dados[1].children
+             const infosUser = [...userDados]
+             console.log(infosUser)
+             const username = infosUser[0].innerText;
+             const conteudoPost = infosUser[1].innerText
+             const data = dados[2].lastChild.innerText
              const cardEdicao = CardEdicaoPost.cardEditarPost(avatar, username, data)
+             console.log(cardEdicao)
              const id = alvo.id
              alvo.innerHTML = "";
              alvo.appendChild(cardEdicao);

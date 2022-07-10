@@ -9,6 +9,9 @@ export default class CardPostUser {
         avatar.src = `${avatarUrl}`;
         avatar.alt = `Foto de perfil`;
 
+        const divInfoPost = document.createElement("div");
+        divInfoPost.classList.add("post__info");
+
         const userName = document.createElement('h3');
         userName.innerText = `${username}`;
 
@@ -31,7 +34,8 @@ export default class CardPostUser {
         formEdit_Remove.append(editar, apagar)
         rodape.append(formEdit_Remove, dataPost)
         divAvatar.append(avatar)
-        divPost.append(divAvatar, userName, postConteudo, rodape)
+        divInfoPost.append(userName, postConteudo)
+        divPost.append(divAvatar, divInfoPost, rodape)
 
         return divPost
     }

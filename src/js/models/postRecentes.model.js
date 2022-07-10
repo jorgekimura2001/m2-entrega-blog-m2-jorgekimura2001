@@ -8,6 +8,9 @@ export default class CardPostRecente{
         avatar.src = `${avatarUrl}`;
         avatar.alt = `Foto de perfil`;
 
+        const divInfoPost = document.createElement('div')
+        divInfoPost.classList.add('post__info')
+
         const userName = document.createElement('h3');
         userName.innerText = `${username}`;
 
@@ -15,10 +18,14 @@ export default class CardPostRecente{
         postConteudo.innerText = `${conteudo}`;
 
         const rodape = document.createElement('div');
-        rodape.innerText = `${data}`;
+        rodape.classList.add('post__data')
+        const dataPost = document.createElement('p');
+        dataPost.innerText = `${data}`;
 
         divAvatar.append(avatar)
-        divPost.append(divAvatar, userName, postConteudo, rodape)
+        divInfoPost.append(userName, postConteudo)
+        rodape.append(dataPost)
+        divPost.append(divAvatar, divInfoPost, rodape)
 
         return divPost
     }
