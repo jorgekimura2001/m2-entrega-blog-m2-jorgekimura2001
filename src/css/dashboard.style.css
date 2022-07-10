@@ -1,0 +1,291 @@
+body {
+  font-family: var(--font-textoPrincipal);
+  background-color: rgb(var(--color-gray-light));
+}
+.topo {
+  background-color: rgb(var(--color-blue));
+  height: 3.8rem;
+  margin-bottom: 1.375rem;
+}
+.topo__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: inherit;
+  background-color: inherit;
+  margin-bottom: inherit;
+}
+
+.topo__container > div {
+  display: flex;
+  align-items: center;
+}
+.topo__userAvatar {
+  width: 3rem;
+  height: 2.875rem;
+  margin-left: 0.875rem;
+  margin-right: 0.6rem;
+}
+.topo__userAvatar > img {
+  border-radius: 100%;
+  width: inherit;
+  height: inherit;
+  object-fit: cover;
+}
+.topo__userName {
+  color: rgb(var(--color-white));
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+.btn__logout {
+  color: rgb(var(--color-white));
+  background-color: rgb(var(--color-yellow));
+  height: 1.875rem;
+  width: 6rem;
+  margin-right: 2.5rem;
+  border-radius: 0.25rem;
+  font-size: 1.125rem;
+  font-weight: 400;
+  padding: 0.25rem 1rem;
+  cursor: pointer;
+}
+.posts {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.post__new {
+  width: 37.5rem;
+  background-color: rgb(var(--color-white));
+  box-shadow: 0px 3px 4px rgba(var(--color-black), 0.25);
+  border-radius: 0.25rem;
+}
+
+.post__new > form {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.post__new > form > textarea {
+  color: rgb(var(--color-gray-median));
+  border: none;
+  font-weight: 400;
+  font-size: 1rem;
+  padding: 1.125rem 0 0 1.125rem;
+  width: 32.5rem;
+  height: 6rem;
+}
+.btn__novoPost {
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: rgb(var(--color-yellow));
+  color: rgb(var(--color-white));
+  border-radius: 0.25rem;
+  cursor: pointer;
+  border: transparent;
+}
+.btn__logout:hover,
+.btn__novoPost:hover {
+  background-color: rgb(var(--color-white));
+  color: rgb(var(--color-yellow));
+  border: 1px solid rgb(var(--color-yellow));
+}
+.post__recent {
+  width: 37.5rem;
+  margin-top: 2.25rem;
+}
+.post__recent > div {
+  padding-top: 0.875rem;
+  display: flex;
+  height: 11.25rem;
+  align-items: flex-start;
+  justify-content: space-between;
+  background-color: rgb(var(--color-white));
+  box-shadow: 0px 3px 4px rgba(var(--color-black), 0.25);
+  border-radius: 0.25rem;
+  margin-bottom: 0.375rem;
+}
+.post__recent > div > div > img {
+  width: 4.375rem;
+  object-fit: cover;
+  border-radius: 100%;
+  height: 4.375rem;
+  margin-right: 2rem;
+  margin-left: 1.25rem;
+}
+.post__recent .post__info {
+  margin-right: 2rem;
+  width: 22rem;
+  height: 8.25rem;
+  overflow: auto;
+}
+.post__info > h3 {
+  color: rgb(var(--color-black));
+  font-size: 1rem;
+  font-weight: 700;
+}
+.post__info > p {
+  font-family: var(--font-Subtextos);
+  font-size: 1rem;
+  color: rgb(var(--color-gray));
+  font-weight: 400;
+}
+.post__data {
+  width: 4rem;
+  height: 0.875rem;
+  margin-right: 1.875rem;
+}
+.post__data > p {
+  font-family: var(--font-Subtextos);
+  font-size: 0.75rem;
+  color: rgb(var(--color-gray));
+}
+.post__rodape > form {
+  display: flex;
+  flex-direction: column;
+}
+.post__edit {
+  color: rgb(var(--color-blue));
+  cursor: pointer;
+  background-color: transparent;
+  margin-bottom: 0.625rem;
+  font-size: 0.75rem;
+  padding: 0.375rem;
+  border-radius: 0.375rem;
+}
+.post__edit:hover {
+  background-color: rgb(var(--color-blue));
+  color: rgb(var(--color-white));
+}
+.post__remove {
+  color: rgb(var(--color-red));
+  cursor: pointer;
+  background-color: transparent;
+  margin-bottom: 0.625rem;
+  font-size: 0.75rem;
+  padding: 0.375rem;
+  border-radius: 0.375rem;
+}
+.post__remove:hover {
+  background-color: rgb(var(--color-red));
+  color: rgb(var(--color-white));
+}
+.post__rodape > p {
+  text-align: center;
+  color: rgb(var(--color-gray-median));
+  font-family: var(--font-Subtextos);
+  font-size: 0.75rem;
+}
+.post__user--edit {
+  display: flex;
+  height: 11.25rem;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: inherit;
+}
+.post__user--edit > div > img {
+  width: 4.375rem;
+  object-fit: cover;
+  border-radius: 100%;
+  height: 4.375rem;
+  margin-right: 2rem;
+  margin-left: 1.25rem;
+}
+.post__info--edit {
+  margin-right: 2rem;
+  width: 22rem;
+  height: 8.25rem;
+}
+.post__info--edit > h3 {
+  color: rgb(var(--color-black));
+  font-size: 1rem;
+  font-weight: 700;
+}
+.post__info--edit > textarea {
+  height: 85%;
+  width: inherit;
+  font-family: var(--font-Subtextos);
+  font-size: 0.75rem;
+  color: rgb(var(--color-gray));
+  padding-top: 0.75rem;
+  padding-left: 0.75rem;
+}
+.post__enviar {
+  color: rgb(var(--color-blue));
+  cursor: pointer;
+  background-color: transparent;
+  margin-bottom: 0.625rem;
+  font-size: 0.75rem;
+  padding: 0.375rem;
+  border-radius: 0.375rem;
+}
+.post__enviar:hover {
+  background-color: rgb(var(--color-blue));
+  color: rgb(var(--color-white));
+}
+
+.post__cancelar {
+  color: rgb(var(--color-red));
+  cursor: pointer;
+  background-color: transparent;
+  margin-bottom: 0.625rem;
+  font-size: 0.75rem;
+  padding: 0.375rem;
+  border-radius: 0.375rem;
+}
+.post__cancelar:hover{
+    background-color: rgb(var(--color-red));
+    color: rgb(var(--color-white));
+}
+.post__rodape {
+  width: 4rem;
+  height: 0.875rem;
+  margin-right: 1.875rem;
+}
+@media screen and (max-width: 630px) {
+  .btn__logout {
+    margin-right: 1.25rem;
+  }
+  .post__new {
+    width: 100%;
+  }
+  .post__new > form {
+    justify-content: initial;
+  }
+  .post__new > form > textarea {
+    width: 90%;
+  }
+  .post__recent {
+    width: 100%;
+    margin-top: 1.75rem;
+  }
+  .post__recent > div,
+  .post__user--edit {
+    max-height: 12rem;
+    margin-bottom: 1rem;
+  }
+  .post__recent > div > div > img,
+  .post__user--edit > div > img {
+    margin-right: 1.25rem;
+  }
+  .post__recent .post__info,
+  .post__info--edit {
+    overflow: auto;
+    margin-right: 0;
+  }
+  .post__data,
+  .post__rodape {
+    margin-right: 0.75rem;
+    margin-left: 0.75rem;
+  }
+  .post__user--edit {
+    justify-content: center;
+  }
+  .post__info--edit {
+    width: inherit;
+  }
+  .post__info--edit > textarea {
+    width: 100%;
+  }
+}
