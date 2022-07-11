@@ -75,6 +75,7 @@ body {
   padding: 1.125rem 0 0 1.125rem;
   width: 32.5rem;
   height: 6rem;
+  resize: none;
 }
 .btn__novoPost {
   width: 1.5rem;
@@ -210,6 +211,7 @@ body {
   color: rgb(var(--color-gray));
   padding-top: 0.75rem;
   padding-left: 0.75rem;
+  resize: none;
 }
 .post__enviar {
   color: rgb(var(--color-blue));
@@ -255,6 +257,7 @@ body {
   }
   .post__new > form > textarea {
     width: 90%;
+    resize: none;
   }
   .post__recent {
     width: 100%;
@@ -287,5 +290,6 @@ body {
   }
   .post__info--edit > textarea {
     width: 100%;
+    resize: none;
   }
 }
