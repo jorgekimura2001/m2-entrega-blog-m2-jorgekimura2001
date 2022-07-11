@@ -30,13 +30,8 @@ export default class Requisicao {
                 return data
             })
             .catch(error => console.log(error))
-
-            console.log(usuario)
-
-            if(usuario.message !== 'Invalid email or password'){
+            if(usuario.message == null){
                 window.location = './dashboard.html';
-               // dashboard --> cadastro
-               // window.location = '../../index.html' --> logout
             }
             return usuario
     }
